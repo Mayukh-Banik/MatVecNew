@@ -113,6 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/weket/Documents/Code/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -129,29 +130,53 @@ MatVec/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/build
 .PHONY : MatVec/fast
 
-example.o: example.cpp.o
-.PHONY : example.o
+src/Bindings/example.o: src/Bindings/example.cpp.o
+.PHONY : src/Bindings/example.o
 
 # target to build an object file
-example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/example.cpp.o
-.PHONY : example.cpp.o
+src/Bindings/example.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/src/Bindings/example.cpp.o
+.PHONY : src/Bindings/example.cpp.o
 
-example.i: example.cpp.i
-.PHONY : example.i
+src/Bindings/example.i: src/Bindings/example.cpp.i
+.PHONY : src/Bindings/example.i
 
 # target to preprocess a source file
-example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/example.cpp.i
-.PHONY : example.cpp.i
+src/Bindings/example.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/src/Bindings/example.cpp.i
+.PHONY : src/Bindings/example.cpp.i
 
-example.s: example.cpp.s
-.PHONY : example.s
+src/Bindings/example.s: src/Bindings/example.cpp.s
+.PHONY : src/Bindings/example.s
 
 # target to generate assembly for a file
-example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/example.cpp.s
-.PHONY : example.cpp.s
+src/Bindings/example.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/src/Bindings/example.cpp.s
+.PHONY : src/Bindings/example.cpp.s
+
+src/temp.o: src/temp.cu.o
+.PHONY : src/temp.o
+
+# target to build an object file
+src/temp.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/src/temp.cu.o
+.PHONY : src/temp.cu.o
+
+src/temp.i: src/temp.cu.i
+.PHONY : src/temp.i
+
+# target to preprocess a source file
+src/temp.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/src/temp.cu.i
+.PHONY : src/temp.cu.i
+
+src/temp.s: src/temp.cu.s
+.PHONY : src/temp.s
+
+# target to generate assembly for a file
+src/temp.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/src/temp.cu.s
+.PHONY : src/temp.cu.s
 
 # Help Target
 help:
@@ -162,9 +187,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MatVec"
-	@echo "... example.o"
-	@echo "... example.i"
-	@echo "... example.s"
+	@echo "... src/Bindings/example.o"
+	@echo "... src/Bindings/example.i"
+	@echo "... src/Bindings/example.s"
+	@echo "... src/temp.o"
+	@echo "... src/temp.i"
+	@echo "... src/temp.s"
 .PHONY : help
 
 
@@ -176,6 +204,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/weket/Documents/Code/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

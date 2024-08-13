@@ -1,5 +1,6 @@
-CMakeFiles/MatVec.dir/example.cpp.o: \
- /home/weket/Documents/Code/example.cpp /usr/include/stdc-predef.h \
+CMakeFiles/MatVec.dir/src/Bindings/example.cpp.o: \
+ /home/weket/Documents/Code/src/Bindings/example.cpp \
+ /usr/include/stdc-predef.h \
  /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
  /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
  /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/attr.h \
@@ -338,4 +339,24 @@ CMakeFiles/MatVec.dir/example.cpp.o: \
  /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/gil.h \
  /usr/include/c++/11/cassert \
  /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/gil_safe_call_once.h \
- /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/typing.h
+ /home/weket/.local/lib/python3.10/site-packages/pybind11/include/pybind11/typing.h \
+ /usr/include/cuda_runtime_api.h /usr/include/crt/host_defines.h \
+ /usr/include/builtin_types.h /usr/include/device_types.h \
+ /usr/include/driver_types.h /usr/include/vector_types.h \
+ /usr/include/surface_types.h /usr/include/texture_types.h \
+ /usr/include/cuda_device_runtime_api.h /usr/include/cuda_runtime.h \
+ /usr/include/crt/host_config.h /usr/include/library_types.h \
+ /usr/include/channel_descriptor.h /usr/include/cuda_runtime_api.h \
+ /usr/include/driver_functions.h /usr/include/vector_functions.h \
+ /usr/include/vector_functions.hpp /usr/include/c++/11/iostream \
+ /usr/include/c++/11/ostream /usr/include/c++/11/ios \
+ /usr/include/c++/11/bits/basic_ios.h \
+ /usr/include/c++/11/bits/locale_facets.h /usr/include/c++/11/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+ /usr/include/c++/11/bits/locale_facets.tcc \
+ /usr/include/c++/11/bits/basic_ios.tcc \
+ /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
+ /usr/include/c++/11/bits/istream.tcc \
+ /home/weket/Documents/Code/include/temp.h

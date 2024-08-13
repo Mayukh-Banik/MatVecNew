@@ -1,8 +1,14 @@
 [
 {
   "directory": "/home/weket/Documents/Code/build",
-  "command": "/usr/bin/c++ -DMatVec_EXPORTS -isystem /home/weket/.local/lib/python3.10/site-packages/pybind11/include -isystem /usr/include/python3.10 -g -fPIC -o CMakeFiles/MatVec.dir/example.cpp.o -c /home/weket/Documents/Code/example.cpp",
-  "file": "/home/weket/Documents/Code/example.cpp",
-  "output": "CMakeFiles/MatVec.dir/example.cpp.o"
+  "command": "/usr/bin/c++ -DMatVec_EXPORTS -I/home/weket/Documents/Code/include -isystem /home/weket/.local/lib/python3.10/site-packages/pybind11/include -isystem /usr/include/python3.10 -g -fPIC -g -Wall -Wextra -Werror -pedantic -o CMakeFiles/MatVec.dir/src/Bindings/example.cpp.o -c /home/weket/Documents/Code/src/Bindings/example.cpp",
+  "file": "/home/weket/Documents/Code/src/Bindings/example.cpp",
+  "output": "CMakeFiles/MatVec.dir/src/Bindings/example.cpp.o"
+},
+{
+  "directory": "/home/weket/Documents/Code/build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -DMatVec_EXPORTS --options-file CMakeFiles/MatVec.dir/includes_CUDA.rsp -g \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\" -Xcompiler=-fPIC -arch=sm_86 -g -G --shared --cudart=shared -x cu -rdc=true -c /home/weket/Documents/Code/src/temp.cu -o CMakeFiles/MatVec.dir/src/temp.cu.o",
+  "file": "/home/weket/Documents/Code/src/temp.cu",
+  "output": "CMakeFiles/MatVec.dir/src/temp.cu.o"
 }
 ]

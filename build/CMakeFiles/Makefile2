@@ -81,12 +81,12 @@ clean: CMakeFiles/MatVec.dir/clean
 CMakeFiles/MatVec.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MatVec.dir/build.make CMakeFiles/MatVec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/weket/Documents/Code/build/CMakeFiles --progress-num=1,2 "Built target MatVec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/weket/Documents/Code/build/CMakeFiles --progress-num=1,2,3,4 "Built target MatVec"
 .PHONY : CMakeFiles/MatVec.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MatVec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/weket/Documents/Code/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/weket/Documents/Code/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MatVec.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/weket/Documents/Code/build/CMakeFiles 0
 .PHONY : CMakeFiles/MatVec.dir/rule
@@ -107,6 +107,7 @@ CMakeFiles/MatVec.dir/clean:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/weket/Documents/Code/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
