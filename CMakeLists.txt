@@ -3,9 +3,9 @@ project(MatVec LANGUAGES CXX CUDA)
 
 # Find pybind11
 execute_process(
-    COMMAND python3 -m pybind11 --cmakedir
-    OUTPUT_VARIABLE PYBIND11_CMAKE_DIR
-    OUTPUT_STRIP_TRAILING_WHITESPACE
+	COMMAND python3 -m pybind11 --cmakedir
+	OUTPUT_VARIABLE PYBIND11_CMAKE_DIR
+	OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 list(APPEND CMAKE_PREFIX_PATH ${PYBIND11_CMAKE_DIR})
 find_package(pybind11 REQUIRED)
@@ -20,33 +20,33 @@ file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cu)
 add_library(MatVec SHARED ${SRC_FILES})
 
 target_compile_options(MatVec PRIVATE
-    $<$<COMPILE_LANGUAGE:CUDA>:-arch=sm_86>
+	$<$<COMPILE_LANGUAGE:CUDA>:-arch=sm_86>
 )
 
 target_compile_options(MatVec PRIVATE
-    # Debug options
-    $<$<CONFIG:Debug>:
-        $<$<COMPILE_LANGUAGE:CXX>:
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -Wall -Wextra -Werror -pedantic>
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:/Zi /W4 /WX>
-        >
-        $<$<COMPILE_LANGUAGE:CUDA>:
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -G --shared --cudart=shared>
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-g -G --shared --cudart=shared>
-        >
-    >
+	# Debug options
+	$<$<CONFIG:Debug>:
+		$<$<COMPILE_LANGUAGE:CXX>:
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -Wall -Wextra -Werror -pedantic>
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:/Zi /W4 /WX>
+		>
+		$<$<COMPILE_LANGUAGE:CUDA>:
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -G --shared --cudart=shared>
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-g -G --shared --cudart=shared>
+		>
+	>
 
-    # Release options
-    $<$<CONFIG:Release>:
-        $<$<COMPILE_LANGUAGE:CXX>:
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-O3 -Wall -Wextra -Werror -pedantic>
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:/O2 /W4 /WX>
-        >
-        $<$<COMPILE_LANGUAGE:CUDA>:
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-O3 --cudart=shared --shared>
-            $<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-O3 --cudart=shared --shared>
-        >
-    >
+	# Release options
+	$<$<CONFIG:Release>:
+		$<$<COMPILE_LANGUAGE:CXX>:
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-O3 -Wall -Wextra -Werror -pedantic>
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:/O2 /W4 /WX>
+		>
+		$<$<COMPILE_LANGUAGE:CUDA>:
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-O3 --cudart=shared --shared>
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-O3 --cudart=shared --shared>
+		>
+	>
 )
 
 
