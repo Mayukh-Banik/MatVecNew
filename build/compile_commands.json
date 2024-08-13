@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/weket/Documents/Code/build",
+  "command": "/usr/bin/c++ -DMatVec_EXPORTS -isystem /home/weket/.local/lib/python3.10/site-packages/pybind11/include -isystem /usr/include/python3.10 -g -fPIC -o CMakeFiles/MatVec.dir/example.cpp.o -c /home/weket/Documents/Code/example.cpp",
+  "file": "/home/weket/Documents/Code/example.cpp",
+  "output": "CMakeFiles/MatVec.dir/example.cpp.o"
+}
+]

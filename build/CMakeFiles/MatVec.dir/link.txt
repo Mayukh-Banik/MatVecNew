@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,MatVec.so -o MatVec.so CMakeFiles/MatVec.dir/example.cpp.o
