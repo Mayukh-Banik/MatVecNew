@@ -397,6 +397,8 @@ _Python_INCLUDE_DIR:INTERNAL=/usr/include/python3.10
 //Python Properties
 _Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;12;64;<none>;cpython-310-x86_64-linux-gnu;abi3;/usr/lib/python3.10;/usr/lib/python3.10;/usr/local/lib/python3.10/dist-packages;/usr/local/lib/python3.10/dist-packages
 _Python_INTERPRETER_SIGNATURE:INTERNAL=bcba3d76495e29169a9bd2da47a2160e
+//Interpreter reason failure
+_Python_Interpreter_REASON_FAILURE:INTERNAL=
 //Path to a library.
 _Python_LIBRARY_RELEASE:INTERNAL=/usr/lib/x86_64-linux-gnu/libpython3.10.so
 //NumPy reason failure

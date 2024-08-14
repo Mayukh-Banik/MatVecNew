@@ -5,7 +5,7 @@ cmake_policy(SET CMP0009 NEW)
 # SRC_FILES at CMakeLists.txt:17 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/weket/Documents/Code/src/*.cpp")
 set(OLD_GLOB
-  "/home/weket/Documents/Code/src/Bindings/example.cpp"
+  "/home/weket/Documents/Code/src/Bindings/Core Bindings.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -15,7 +15,6 @@ endif()
 # SRC_FILES at CMakeLists.txt:17 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/weket/Documents/Code/src/*.cu")
 set(OLD_GLOB
-  "/home/weket/Documents/Code/src/temp.cu"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
