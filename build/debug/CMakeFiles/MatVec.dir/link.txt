@@ -1,1 +1,1 @@
-/usr/lib/nvidia-cuda-toolkit/bin/g++ -fPIC -shared -Wl,-soname,MatVec.so -o MatVec.so @CMakeFiles/MatVec.dir/objects1.rsp -L"/usr/lib/x86_64-linux-gnu/stubs" -L"/usr/lib/x86_64-linux-gnu"
+/usr/bin/g++ -fPIC -shared -Wl,-soname,MatVec.so -o MatVec.so @CMakeFiles/MatVec.dir/objects1.rsp CMakeFiles/MatVec.dir/cmake_device_link.o @CMakeFiles/MatVec.dir/linkLibs.rsp -L"/usr/local/cuda/targets/x86_64-linux/lib/stubs" -L"/usr/local/cuda/targets/x86_64-linux/lib"

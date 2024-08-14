@@ -53,10 +53,10 @@ RM = /snap/cmake/1409/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/weket/Documents/Code
+CMAKE_SOURCE_DIR = /home/weket/Documents/MatVecNew
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/weket/Documents/Code/build/debug
+CMAKE_BINARY_DIR = /home/weket/Documents/MatVecNew/build/debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/MatVec.dir/depend.make
@@ -70,31 +70,71 @@ include CMakeFiles/MatVec.dir/progress.make
 include CMakeFiles/MatVec.dir/flags.make
 
 CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o: CMakeFiles/MatVec.dir/flags.make
-CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o: /home/weket/Documents/Code/src/Bindings/Core\ Bindings.cpp
+CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o: /home/weket/Documents/MatVecNew/src/Bindings/Core\ Bindings.cpp
 CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o: CMakeFiles/MatVec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/weket/Documents/Code/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o -MF CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o.d -o CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o -c "/home/weket/Documents/Code/src/Bindings/Core Bindings.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/weket/Documents/MatVecNew/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o -MF CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o.d -o CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o -c "/home/weket/Documents/MatVecNew/src/Bindings/Core Bindings.cpp"
 
 CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/weket/Documents/Code/src/Bindings/Core Bindings.cpp" > CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/weket/Documents/MatVecNew/src/Bindings/Core Bindings.cpp" > CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.i
 
 CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/weket/Documents/Code/src/Bindings/Core Bindings.cpp" -o CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/weket/Documents/MatVecNew/src/Bindings/Core Bindings.cpp" -o CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.s
+
+CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o: CMakeFiles/MatVec.dir/flags.make
+CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o: CMakeFiles/MatVec.dir/includes_CUDA.rsp
+CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o: /home/weket/Documents/MatVecNew/src/Class\ Defs/Temp.cu
+CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o: CMakeFiles/MatVec.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/weket/Documents/MatVecNew/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o -MF CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o.d -x cu -rdc=true -c "/home/weket/Documents/MatVecNew/src/Class Defs/Temp.cu" -o CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o
+
+CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
 # Object files for target MatVec
 MatVec_OBJECTS = \
-"CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o"
+"CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o" \
+"CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o"
+
+# External object files for target MatVec
+MatVec_EXTERNAL_OBJECTS =
+
+CMakeFiles/MatVec.dir/cmake_device_link.o: CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o
+CMakeFiles/MatVec.dir/cmake_device_link.o: CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o
+CMakeFiles/MatVec.dir/cmake_device_link.o: CMakeFiles/MatVec.dir/build.make
+CMakeFiles/MatVec.dir/cmake_device_link.o: CMakeFiles/MatVec.dir/deviceLinkLibs.rsp
+CMakeFiles/MatVec.dir/cmake_device_link.o: CMakeFiles/MatVec.dir/deviceObjects1.rsp
+CMakeFiles/MatVec.dir/cmake_device_link.o: CMakeFiles/MatVec.dir/dlink.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/weket/Documents/MatVecNew/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA device code CMakeFiles/MatVec.dir/cmake_device_link.o"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MatVec.dir/dlink.txt --verbose=$(VERBOSE)
+
+# Rule to build all files generated by this target.
+CMakeFiles/MatVec.dir/build: CMakeFiles/MatVec.dir/cmake_device_link.o
+.PHONY : CMakeFiles/MatVec.dir/build
+
+# Object files for target MatVec
+MatVec_OBJECTS = \
+"CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o" \
+"CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o"
 
 # External object files for target MatVec
 MatVec_EXTERNAL_OBJECTS =
 
 MatVec.so: CMakeFiles/MatVec.dir/src/Bindings/Core_Bindings.cpp.o
+MatVec.so: CMakeFiles/MatVec.dir/src/Class_Defs/Temp.cu.o
 MatVec.so: CMakeFiles/MatVec.dir/build.make
+MatVec.so: CMakeFiles/MatVec.dir/cmake_device_link.o
+MatVec.so: CMakeFiles/MatVec.dir/linkLibs.rsp
 MatVec.so: CMakeFiles/MatVec.dir/objects1.rsp
 MatVec.so: CMakeFiles/MatVec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/weket/Documents/Code/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CUDA shared library MatVec.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/weket/Documents/MatVecNew/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CUDA shared library MatVec.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MatVec.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -106,6 +146,6 @@ CMakeFiles/MatVec.dir/clean:
 .PHONY : CMakeFiles/MatVec.dir/clean
 
 CMakeFiles/MatVec.dir/depend:
-	cd /home/weket/Documents/Code/build/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/weket/Documents/Code /home/weket/Documents/Code /home/weket/Documents/Code/build/debug /home/weket/Documents/Code/build/debug /home/weket/Documents/Code/build/debug/CMakeFiles/MatVec.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/weket/Documents/MatVecNew/build/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/weket/Documents/MatVecNew /home/weket/Documents/MatVecNew /home/weket/Documents/MatVecNew/build/debug /home/weket/Documents/MatVecNew/build/debug /home/weket/Documents/MatVecNew/build/debug/CMakeFiles/MatVec.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/MatVec.dir/depend
 

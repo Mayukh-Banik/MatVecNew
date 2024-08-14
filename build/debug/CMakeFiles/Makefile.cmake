@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/weket/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11/pybind11ConfigVersion.cmake"
   "/home/weket/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11/pybind11NewTools.cmake"
   "/home/weket/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11/pybind11Targets.cmake"
-  "/home/weket/Documents/Code/CMakeLists.txt"
+  "/home/weket/Documents/MatVecNew/CMakeLists.txt"
   "CMakeFiles/3.30.2/CMakeCUDACompiler.cmake"
   "CMakeFiles/3.30.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.30.2/CMakeSystem.cmake"
