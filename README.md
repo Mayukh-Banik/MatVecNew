@@ -26,9 +26,15 @@ sudo apt update
 
 sudo apt upgrade -y
 
-Install pip
+sudo apt install python3-pip
 
 pip install pybind11
+
+sudo apt install snapd
+
+sudo snap install cmake --classic
+
+https://developer.nvidia.com/cuda-downloads
 
 Install CUDA:
 

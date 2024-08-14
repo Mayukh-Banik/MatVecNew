@@ -1,4 +1,9 @@
 cmake_minimum_required(VERSION 3.30.2)
+
+if(UNIX AND NOT APPLE)
+    set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
+endif()
+
 project(MatVec LANGUAGES CXX CUDA)
 
 # Find pybind11
@@ -11,13 +16,15 @@ list(APPEND CMAKE_PREFIX_PATH ${PYBIND11_CMAKE_DIR})
 find_package(pybind11 REQUIRED)
 
 # Set CUDA architectures
-set(CUDA_ARCHITECTURES 86) # Adjust according to your target GPU architectures
+# set(CUDA_ARCHITECTURES 86) # Adjust according to your target GPU architectures
 
 # Recursively find all .cpp and .cu files in the src directory
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cu)
 
 # Add library with CUDA support
 add_library(MatVec SHARED ${SRC_FILES})
+
+set_property(TARGET MatVec PROPERTY CUDA_ARCHITECTURES 86)
 
 target_compile_options(MatVec PRIVATE
 	$<$<COMPILE_LANGUAGE:CUDA>:-arch=sm_86>
@@ -31,7 +38,7 @@ target_compile_options(MatVec PRIVATE
 			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:/Zi /W4 /WX>
 		>
 		$<$<COMPILE_LANGUAGE:CUDA>:
-			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -G --shared --cudart=shared>
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -G --shared --cudart=static>
 			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-g -G --shared --cudart=shared>
 		>
 	>
