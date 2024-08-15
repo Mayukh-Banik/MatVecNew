@@ -20,5 +20,7 @@ public:
     MatVec(const pybind11::array& array);
 
     ~MatVec();
+
+    std::string toString();
 private:
 };
