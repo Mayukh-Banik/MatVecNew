@@ -58,6 +58,11 @@ void init_MatVecBindings(py::module_& m)
 				Index of the item to set.
 			value : float
 				Value to set at the specified index.
-		)");
+		)")
+		.def_readonly("ndim", &MatVec::ndim)
+        .def_readonly("elementCount", &MatVec::elementCount)
+        .def_readonly("memSize", &MatVec::memSize)
+        .def_readonly("shape", &MatVec::shape)
+        .def_readonly("strides", &MatVec::strides);;
 
 }

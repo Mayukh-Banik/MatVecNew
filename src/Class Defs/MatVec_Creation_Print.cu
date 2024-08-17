@@ -31,8 +31,8 @@ MatVec::MatVec(const pybind11::array& array)
     }
     else if (buf.ndim == 1)
     {
-        this->shape = {1, static_cast<std::uint64_t>(buf.shape[0])};
-        this->strides = {0, itemsize};
+        this->shape = {static_cast<std::uint64_t>(buf.shape[0]), 1};
+        this->strides = {itemsize, 0};
         this->elementCount = buf.shape[0];
     }
     else
