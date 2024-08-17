@@ -1,6 +1,10 @@
 {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
     "files.associations": {
         "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
+    
 }

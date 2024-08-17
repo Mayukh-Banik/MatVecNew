@@ -18,28 +18,24 @@ MatVec::MatVec(const pybind11::array& array)
         throw std::runtime_error("Input array must be of type np.float64 (double).");
     }
     pybind11::buffer_info buf = array.request();
-    
-    // Ensure at least 2 dimensions
     this->ndim = std::max(static_cast<std::uint64_t>(2), static_cast<std::uint64_t>(buf.ndim));
     this->elementCount = 1;
     this->shape.reserve(ndim);
     this->strides.reserve(ndim);
-    
     const std::uint64_t itemsize = sizeof(double);
-
-    if (buf.ndim == 0)  // Single element
+    if (buf.ndim == 0)
     {
         this->shape = {1, 1};
         this->strides = {0, 0};
         this->elementCount = 1;
     }
-    else if (buf.ndim == 1)  // Vector
+    else if (buf.ndim == 1)
     {
         this->shape = {1, static_cast<std::uint64_t>(buf.shape[0])};
         this->strides = {0, itemsize};
         this->elementCount = buf.shape[0];
     }
-    else  // 2 or more dimensions
+    else
     {
         for (pybind11::ssize_t i = 0; i < buf.ndim; i++) 
         {
@@ -106,4 +102,18 @@ std::string MatVec::toString()
 		oss << "]\n";
 	}
 	return oss.str();
+}
+
+double MatVec::get(std::uint64_t index)
+{
+	double x;
+	cudaError_t t = cudaMemcpy(&x, this->data + index, DOUBLE_SIZE, cudaMemcpyDeviceToHost);
+	CUDA_CHECK_ERROR(t);
+	return x;
+}
+
+void MatVec::set(std::uint64_t index, double value)
+{
+	cudaError_t t = cudaMemcpy(this->data + index, &value, DOUBLE_SIZE, cudaMemcpyHostToDevice);
+	CUDA_CHECK_ERROR(t);
 }

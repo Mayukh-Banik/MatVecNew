@@ -22,5 +22,9 @@ public:
     ~MatVec();
 
     std::string toString();
+
+    double get(std::uint64_t index);
+    void set(std::uint64_t index, double val);
+    std::uint64_t length() {return this->elementCount;}
 private:
 };
