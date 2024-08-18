@@ -40,26 +40,21 @@ To use MatVec, follow these steps:
     sudo apt upgrade -y
     ```
 
-2. Install Python pip:
+2. Install Python pip and pytest:
 
     ```bash
     sudo apt install python3-pip
+    pip install pytest
     ```
 
-3. Install PyBind11:
-
-    ```bash
-    pip install pybind11
-    ```
-
-4. Install Snapd and CMake:
+3. Install CMake:
 
     ```bash
     sudo apt install snapd
     sudo snap install cmake --classic
     ```
 
-5. Install CUDA:
+4. Install CUDA:
 
     - Visit [NVIDIA CUDA Downloads](https://developer.nvidia.com/cuda-downloads) and follow the instructions for your system.
     - Ensure that CUDA is accessible to CMake. For Pop OS, you can install the NVIDIA CUDA Toolkit:
@@ -70,13 +65,27 @@ To use MatVec, follow these steps:
 
         Note: The version in the repository may be outdated. Custom installation methods may be necessary, current version is 11.6, ensure CUDA is >= 12.
 
-6. Install CMake:
+5. Install CMake:
 
     - Minimum version required: 3.30.2. Lower versions might work but are not tested.
 
+6. Run ./BuildScipt.sh which will also run the tests
+
 ### Windows
 
-There's currently a bug, will update in the future.
+1. Install Visual Studio, or build tools for Windows.
+
+2. Install CMake, preferred with pip, but use any distribution as long as its added to path.
+
+3. Install pytest
+
+    ```bash
+    pip install pytest
+    ```
+
+4. Install CUDA toolkit 12.5: https://developer.nvidia.com/cuda-12-5-0-download-archive?target_os=Windows
+
+5. Rub BuildScript.bat. This will also run the test suite.
 
 ## License
 
