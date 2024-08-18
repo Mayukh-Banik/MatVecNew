@@ -78,9 +78,10 @@ To use MatVec, follow these steps:
 2. Install CMake, preferred with pip, but use any distribution as long as its added to path.
 
 3. Install pytest
-    '''bash
+
+    ```bash
     pip install pytest
-    '''
+    ```
 
 4. Install CUDA toolkit 12.5: https://developer.nvidia.com/cuda-12-5-0-download-archive?target_os=Windows
 
