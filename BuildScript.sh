@@ -2,7 +2,7 @@
 
 # Check if an argument is provided
 if [ -z "$1" ]; then
-  echo "Usage: $0 [debug|release]"
+  echo "Usage: $0 [Debug|Release]"
   exit 1
 fi
 
@@ -10,9 +10,9 @@ fi
 BUILD_TYPE="$1"
 
 # Validate the argument
-if [ "$BUILD_TYPE" != "debug" ] && [ "$BUILD_TYPE" != "release" ]; then
+if [ "$BUILD_TYPE" != "Debug" ] && [ "$BUILD_TYPE" != "Release" ]; then
   echo "Invalid build type: $BUILD_TYPE"
-  echo "Usage: $0 [debug|release]"
+  echo "Usage: $0 [Debug|Release]"
   exit 1
 fi
 
@@ -24,3 +24,5 @@ fi
 # Configure and build the project
 cmake -S . -B "build/$BUILD_TYPE" -DCMAKE_BUILD_TYPE="${BUILD_TYPE^}"
 cmake --build "build/$BUILD_TYPE"
+
+pytest tests/
