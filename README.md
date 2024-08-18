@@ -1,51 +1,87 @@
-**MatVec**
+# MatVec
 
-NumPy on the GPU made using PyBind11 and CUDA software. Only for NVIDIA GPUs at the moment.
+**MatVec** is a library for performing matrix-vector operations on the GPU using NumPy arrays, PyBind11, and CUDA. It is designed for NVIDIA GPUs.
 
-This is meant to be drop in usage with NumPy arrays. 
+## Features
 
-Usage:
+- Leverages GPU acceleration for matrix-vector operations.
+- Drop-in usage with existing NumPy arrays.
 
-import MatVec as mv
+## Usage
 
-import numpy as np
+To use MatVec, follow these steps:
 
-a = np.array(1)
+1. Import the library and NumPy:
 
-b = mv(a)
+    ```python
+    import MatVec as mv
+    import numpy as np
+    ```
 
+2. Create a NumPy array and pass it to MatVec:
 
-Can only be called from existing NumPy arrays that are readable, contiguos in memory, and have data types of float 64.
+    ```python
+    a = np.array(1)
+    b = mv(a)
+    ```
 
+**Note**: The input array must be readable, contiguous in memory, and have a data type of `float64`.
 
-Installation guide:
+## Installation Guide
 
-Linux:
+### Linux
 
-sudo apt update
+1. Update and upgrade your system:
 
-sudo apt upgrade -y
+    ```bash
+    sudo apt update
+    sudo apt upgrade -y
+    ```
 
-sudo apt install python3-pip
+2. Install Python pip:
 
-pip install pybind11
+    ```bash
+    sudo apt install python3-pip
+    ```
 
-sudo apt install snapd
+3. Install PyBind11:
 
-sudo snap install cmake --classic
+    ```bash
+    pip install pybind11
+    ```
 
-https://developer.nvidia.com/cuda-downloads
+4. Install Snapd and CMake:
 
-Install CUDA:
+    ```bash
+    sudo apt install snapd
+    sudo snap install cmake --classic
+    ```
 
-  Ensure that CUDA is accessible to CMake, I used Pop OS sudo apt install nvidia-cuda-toolkit
+5. Install CUDA:
 
-  The version is slightly outdated, custom methods IDK how to do
+    - Visit [NVIDIA CUDA Downloads](https://developer.nvidia.com/cuda-downloads) and follow the instructions for your system.
+    - Ensure that CUDA is accessible to CMake. For Pop OS, you can install the NVIDIA CUDA Toolkit:
 
-Install CMake: 
+        ```bash
+        sudo apt install nvidia-cuda-toolkit
+        ```
 
-  min version is 3.30.2, but it can be manually lowered if desired, haven't tested with anything lower though.
+        Note: The version in the repository may be outdated. Custom installation methods may be necessary.
 
-Windows:
+6. Install CMake:
 
-  Install CUDA, PyBind11. Will test later.
+    - Minimum version required: 3.30.2. Lower versions might work but are not tested.
+
+### Windows
+
+1. Install CUDA and PyBind11.
+2. Additional instructions and testing are forthcoming.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or issues, please contact [your email or contact information here].
+
