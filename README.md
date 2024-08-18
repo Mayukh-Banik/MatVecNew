@@ -1,6 +1,8 @@
 # MatVec
 
-**MatVec** is a library for performing matrix-vector operations on the GPU using NumPy arrays, PyBind11, and CUDA. It is designed for NVIDIA GPUs.
+**MatVec** is a python library meant to be a replacement for any NumPy operations on CUDA capable GPUs. Creation of MatVec classes currently can only be done with existing NumPy arrays due to too many creation routines for one person at this time, although once created, existing arrays will behave exactly the same as NumPy code on the CPU. 
+
+Must be built from source with CUDA > 12 due to a bug in CUDA 11.5.
 
 ## Features
 
@@ -25,7 +27,7 @@ To use MatVec, follow these steps:
     b = mv(a)
     ```
 
-**Note**: The input array must be readable, contiguous in memory, and have a data type of `float64`.
+**Note**: The input array must be readable, contiguous in memory, and have a data type of `np.float64`.
 
 ## Installation Guide
 
@@ -66,7 +68,7 @@ To use MatVec, follow these steps:
         sudo apt install nvidia-cuda-toolkit
         ```
 
-        Note: The version in the repository may be outdated. Custom installation methods may be necessary.
+        Note: The version in the repository may be outdated. Custom installation methods may be necessary, current version is 11.6, ensure CUDA is >= 12.
 
 6. Install CMake:
 
@@ -74,8 +76,7 @@ To use MatVec, follow these steps:
 
 ### Windows
 
-1. Install CUDA and PyBind11.
-2. Additional instructions and testing are forthcoming.
+There's currently a bug, will update in the future.
 
 ## License
 
