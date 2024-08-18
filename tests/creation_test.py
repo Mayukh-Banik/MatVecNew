@@ -4,7 +4,13 @@ import os
 # Add the parent directory of 'MatVecNew' to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from build.Debug import MatVec as mv
+if os.name == 'posix':  # For Linux and macOS
+    from build.Debug import MatVec as mv
+elif os.name == 'nt':  # For Windows
+    from build.Debug.Debug import MatVec as mv
+else:
+    raise ImportError("Unsupported operating system")
+
 import numpy as np
 import pytest
 import time
