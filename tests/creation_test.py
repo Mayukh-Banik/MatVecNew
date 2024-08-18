@@ -58,3 +58,12 @@ class TestMatVecCreation:
             Dtype of original: {arr.dtype}
             Dtype of returned: {b.dtype}
             Difference: {np.abs(b - arr)}"""
+
+	def test_dimensions(self):
+		arrays = [self.scalar, self.vector, self.matrix]
+		for arr in arrays:
+			b = mv.MatVec(arr)
+			assert b.shape == arr.shape
+			assert b.strides == arr.strides
+			assert b.ndim == arr.ndim
+

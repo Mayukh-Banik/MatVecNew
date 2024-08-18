@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
+#include <pybind11/stl.h>
 
 #include "MatVecCore/MatVecClassDeclaration.h"
 
@@ -62,7 +63,9 @@ void init_MatVecBindings(py::module_& m)
 		.def_readonly("ndim", &MatVec::ndim)
         .def_readonly("elementCount", &MatVec::elementCount)
         .def_readonly("memSize", &MatVec::memSize)
-        .def_readonly("shape", &MatVec::shape)
-        .def_readonly("strides", &MatVec::strides);;
+		.def_property_readonly("shape", &MatVec::get_shape)
+        .def_property_readonly("strides", &MatVec::get_strides);
+        // .def_readonly("shape", &MatVec::shape)
+        // .def_readonly("strides", &MatVec::strides);;
 
 }

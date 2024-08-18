@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <cstdint>
+#include <pybind11/stl.h>
 
 class MatVec
 {
@@ -26,5 +27,7 @@ public:
     double get(std::uint64_t index);
     void set(std::uint64_t index, double val);
     std::uint64_t length() {return this->elementCount;}
+	pybind11::tuple get_shape() const {return pybind11::cast(shape);}
+    pybind11::tuple get_strides() const {return pybind11::cast(strides);}
 private:
 };

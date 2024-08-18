@@ -18,21 +18,19 @@ MatVec::MatVec(const pybind11::array& array)
         throw std::runtime_error("Input array must be of type np.float64 (double).");
     }
     pybind11::buffer_info buf = array.request();
-    this->ndim = std::max(static_cast<std::uint64_t>(2), static_cast<std::uint64_t>(buf.ndim));
+    this->ndim = static_cast<std::uint64_t>(buf.ndim);
     this->elementCount = 1;
     this->shape.reserve(ndim);
     this->strides.reserve(ndim);
     const std::uint64_t itemsize = sizeof(double);
     if (buf.ndim == 0)
     {
-        this->shape = {1, 1};
-        this->strides = {0, 0};
         this->elementCount = 1;
     }
     else if (buf.ndim == 1)
     {
-        this->shape = {static_cast<std::uint64_t>(buf.shape[0]), 1};
-        this->strides = {itemsize, 0};
+        this->shape = {static_cast<std::uint64_t>(buf.shape[0])};
+        this->strides = {itemsize};
         this->elementCount = buf.shape[0];
     }
     else

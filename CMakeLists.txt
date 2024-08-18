@@ -39,7 +39,7 @@ target_compile_options(MatVec PRIVATE
 		>
 		$<$<COMPILE_LANGUAGE:CUDA>:
 			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Linux>:-g -G --shared --cudart=static>
-			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-g -G --shared --cudart=shared>
+			$<$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>:-g -G --shared --cudart=static>
 		>
 	>
 

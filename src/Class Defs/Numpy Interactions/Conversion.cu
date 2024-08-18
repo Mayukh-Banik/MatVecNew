@@ -11,17 +11,17 @@ pybind11::array_t<double> toNumPyArray(const MatVec& m)
     std::vector<py::ssize_t> shape(m.shape.begin(), m.shape.end());
     std::vector<py::ssize_t> strides(m.strides.begin(), m.strides.end());
 
-    // Remove trailing dimensions of size 1
-    while (shape.size() > 1 && shape.back() == 1) {
-        shape.pop_back();
-        strides.pop_back();
-    }
+    // // Remove trailing dimensions of size 1
+    // while (shape.size() > 1 && shape.back() == 1) {
+    //     shape.pop_back();
+    //     strides.pop_back();
+    // }
 
-    // Handle scalar case
-    if (shape.size() == 1 && shape[0] == 1) {
-        shape.clear();
-        strides.clear();
-    }
+    // // Handle scalar case
+    // if (shape.size() == 1 && shape[0] == 1) {
+    //     shape.clear();
+    //     strides.clear();
+    // }
 
     // Create the NumPy array with proper shape and strides
     py::array_t<double> arr(shape, strides);
