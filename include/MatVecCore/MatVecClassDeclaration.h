@@ -20,6 +20,8 @@ public:
 
     MatVec(const pybind11::array& array);
 
+	MatVec(double* data, std::uint64_t ndim, std::uint64_t elementCount, std::uint64_t memeSize, const std::vector<std::uint64_t> shape, const std::vector<std::uint64_t> strides);
+
     ~MatVec();
 
     std::string toString();
