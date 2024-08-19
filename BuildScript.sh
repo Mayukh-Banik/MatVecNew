@@ -23,4 +23,4 @@ fi
 
 # Configure and build the project
 cmake -S . -B "build/$BUILD_TYPE" -DCMAKE_BUILD_TYPE="${BUILD_TYPE^}"
-cmake --build "build/$BUILD_TYPE"
+cmake --build "build/$BUILD_TYPE" --parallel 16

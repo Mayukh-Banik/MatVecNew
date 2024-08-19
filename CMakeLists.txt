@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.30.2)
 
+set(CMAKE_CUDA_ARCHITECTURES 86)
+
 project(MatVec LANGUAGES CXX CUDA)
+
+# Add Boost configuration
+find_package(Boost REQUIRED)
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 add_subdirectory(lib/pybind11)
 
@@ -35,14 +41,18 @@ target_compile_options(MatVec PRIVATE
     >
 )
 
-
 set_target_properties(MatVec PROPERTIES POSITION_INDEPENDENT_CODE ON)
 set_target_properties(MatVec PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-target_link_libraries(MatVec PUBLIC pybind11::module)
+target_link_libraries(MatVec PUBLIC pybind11::module ${Boost_LIBRARIES})
 set_target_properties(MatVec PROPERTIES CUDA_STANDARD 17)
 set_target_properties(MatVec PROPERTIES CXX_STANDARD 17)
 set_target_properties(MatVec PROPERTIES CUDA_LINK_LIBRARIES_KEYWORD "PUBLIC")
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set_target_properties(MatVec PROPERTIES LINKER_LANGUAGE CUDA)
-target_include_directories(MatVec PUBLIC include)
-include_directories(include)
+target_include_directories(MatVec PUBLIC include ${Boost_INCLUDE_DIRS})
+include_directories(include ${Boost_INCLUDE_DIRS})
+
+# For CUDA files
+if(CUDA_FOUND)
+    set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} -I${Boost_INCLUDE_DIRS})
+endif()

@@ -7,7 +7,11 @@
                 "/home/weket/.local/lib/python3.10/site-packages/pybind11/include",
                 "/usr/include/python3.10",
                 "/usr/local/cuda/include",
-                "${workspaceFolder}/include"
+                "/usr/local/",
+                "${workspaceFolder}/lib/boost",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/lib/pybind11/include",
+                "${workspaceFolder}"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

@@ -3,11 +3,14 @@
 #include <pybind11/stl.h>
 
 #include "MatVecCore/MatVecClassDeclaration.h"
+#include "Bindings/Bindings.h"
 
 namespace py =  pybind11;
+
+template <typename T>
 void init_MatVecBindings(py::module_& m)
 {
-	py::class_<MatVec>(m, "MatVec", R"(
+	py::class_<MatVec<T>>(m, "MatVec", R"(
 		A class meant to recreate NumPy on the GPU as much as possible.
 
 		Can only be created from existing NumPy arrays that are C style and are of dtype=np.float64.
@@ -30,10 +33,10 @@ void init_MatVecBindings(py::module_& m)
 			a = np.array([5], dtype=np.float64)
 			b = mv.MatVec(a)
 		)")
-		.def("__str__", &MatVec::toString)
-		.def("__repr__", &MatVec::toString)
-		.def("__len__", &MatVec::length)
-		.def("__getitem__", &MatVec::get, R"(
+		.def("__str__", &MatVec<T>::toString)
+		.def("__repr__", &MatVec<T>::toString)
+		.def("__len__", &MatVec<T>::length)
+		.def("__getitem__", &MatVec<T>::get, R"(
 			Get an item from the MatVec object.
 
 			Not recommended due to memory copy time from host to device.
@@ -48,7 +51,7 @@ void init_MatVecBindings(py::module_& m)
 			float
 				Value at the specified index.
 		)")
-		.def("__setitem__", &MatVec::set, R"(
+		.def("__setitem__", &MatVec<T>::set, R"(
 			Set an item in the MatVec object.
 
 			Not recommended due to memory copy time from host to device.
@@ -60,12 +63,11 @@ void init_MatVecBindings(py::module_& m)
 			value : float
 				Value to set at the specified index.
 		)")
-		.def_readonly("ndim", &MatVec::ndim)
-        .def_readonly("elementCount", &MatVec::elementCount)
-        .def_readonly("memSize", &MatVec::memSize)
-		.def_property_readonly("shape", &MatVec::get_shape)
-        .def_property_readonly("strides", &MatVec::get_strides);
-        // .def_readonly("shape", &MatVec::shape)
-        // .def_readonly("strides", &MatVec::strides);;
-
+		.def_readonly("ndim", &MatVec<T>::ndim)
+        .def_readonly("elementCount", &MatVec<T>::elementCount)
+        .def_readonly("memSize", &MatVec<T>::memSize)
+		.def_property_readonly("shape", &MatVec<T>::get_shape)
+        .def_property_readonly("strides", &MatVec<T>::get_strides);
 }
+
+template void init_MatVecBindings<double>(pybind11::module_&);

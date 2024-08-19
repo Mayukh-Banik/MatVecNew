@@ -7,7 +7,8 @@
 
 #include "Constants/Common Defs.h"
 
-std::string MatVec::toString()
+template <typename T>
+std::string MatVec<T>::toString()
 {
 	std::ostringstream oss;
 	oss << "Dimensions: " << ndim << "\n";
@@ -29,8 +30,8 @@ std::string MatVec::toString()
 	oss << "]\n";
 	oss << "Data (first few elements): [";
 	const int maxElementsToPrint = 10;
-	std::vector<double> hostData(std::min(maxElementsToPrint, static_cast<int>(elementCount)));
-	cudaError_t cudaStatus = cudaMemcpy(hostData.data(), data, hostData.size() * sizeof(double), cudaMemcpyDeviceToHost);
+	std::vector<T> hostData(std::min(maxElementsToPrint, static_cast<int>(elementCount)));
+	cudaError_t cudaStatus = cudaMemcpy(hostData.data(), data, hostData.size() * sizeof(T), cudaMemcpyDeviceToHost);
 	if (cudaStatus != cudaSuccess) 
 	{
 		oss << "Error copying data from GPU: " << cudaGetErrorString(cudaStatus) << "]\n";
@@ -54,16 +55,23 @@ std::string MatVec::toString()
 	return oss.str();
 }
 
-double MatVec::get(std::uint64_t index)
+template <typename T>
+T MatVec<T>::get(std::uint64_t index)
 {
-	double x;
-	cudaError_t t = cudaMemcpy(&x, this->data + index, DOUBLE_SIZE, cudaMemcpyDeviceToHost);
+	T x;
+	cudaError_t t = cudaMemcpy(&x, this->data + index, sizeof(T), cudaMemcpyDeviceToHost);
 	CUDA_CHECK_ERROR(t);
 	return x;
 }
 
-void MatVec::set(std::uint64_t index, double value)
+
+template <typename T>
+void MatVec<T>::set(std::uint64_t index, T value)
 {
-	cudaError_t t = cudaMemcpy(this->data + index, &value, DOUBLE_SIZE, cudaMemcpyHostToDevice);
+	cudaError_t t = cudaMemcpy(this->data + index, &value, sizeof(T), cudaMemcpyHostToDevice);
 	CUDA_CHECK_ERROR(t);
 }
+
+template std::string MatVec<double>::toString();
+template double MatVec<double>::get(std::uint64_t index);
+template void MatVec<double>::set(std::uint64_t index, double value);

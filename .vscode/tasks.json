@@ -2,25 +2,21 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "Run BuildScript with Debug",
             "type": "shell",
-            "command": "cmake --build .",
+            "command": "./BuildScript.sh",
+            "args": [
+                "Debug"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": "$gcc"
-        },
-        {
-            "type": "cmake",
-            "label": "CMake: build",
-            "command": "build",
-            "targets": [
-                "all"
-            ],
-            "group": "build",
-            "problemMatcher": [],
-            "detail": "CMake template build task"
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
         }
     ]
 }

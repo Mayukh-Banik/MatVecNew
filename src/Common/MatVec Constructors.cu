@@ -7,15 +7,12 @@
 
 #include "Constants/Common Defs.h"
 
-MatVec::MatVec(const pybind11::array& array)
+template <typename T>
+MatVec<T>::MatVec(const pybind11::array& array)
 {
-    if (array.dtype().kind() != 'f' || array.dtype().itemsize() != sizeof(double)) 
+    if(!array.dtype().is(pybind11::dtype::of<T>()))
     {
-        throw std::runtime_error("Input array must be of type np.float64 (double).");
-    }
-    else if(!array.dtype().is(pybind11::dtype::of<double>()))
-    {
-        throw std::runtime_error("Input array must be of type np.float64 (double).");
+        throw std::runtime_error("Input array type was not validated.");
     }
     pybind11::buffer_info buf = array.request();
     this->ndim = static_cast<std::uint64_t>(buf.ndim);
@@ -49,7 +46,8 @@ MatVec::MatVec(const pybind11::array& array)
     CUDA_CHECK_ERROR(t);
 }
 
-MatVec::MatVec(double* data, std::uint64_t ndim, std::uint64_t elementCount, std::uint64_t memSize, const std::vector<std::uint64_t> shape, const std::vector<std::uint64_t> strides)
+template <typename T>
+MatVec<T>::MatVec(T* data, std::uint64_t ndim, std::uint64_t elementCount, std::uint64_t memSize, const std::vector<std::uint64_t> shape, const std::vector<std::uint64_t> strides)
 {
 	this->ndim = ndim;
 	this->elementCount = elementCount;
@@ -60,7 +58,17 @@ MatVec::MatVec(double* data, std::uint64_t ndim, std::uint64_t elementCount, std
 	CUDA_CHECK_ERROR(t);
 }
 
-MatVec::~MatVec()
+template <typename T>
+MatVec<T>::~MatVec()
 {
 	cudaFree(this->data);
 }
+
+// Explicit instantiations for double
+template class MatVec<double>;
+
+// template MatVec<double>::MatVec(const pybind11::array& array);
+// template MatVec<double>::MatVec(double* data, std::uint64_t ndim, std::uint64_t elementCount, std::uint64_t memSize, const std::vector<std::uint64_t> shape, const std::vector<std::uint64_t> strides);
+// template MatVec<double>::~MatVec();
+
+

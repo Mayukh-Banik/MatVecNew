@@ -7,13 +7,13 @@
 
 #include "MatVecCore/MatVecClassDeclaration.h"
 #include "MatVecCore/NumPyInteractions.h"
-namespace py = pybind11;
 
-void init_MatVecBindings(py::module_& m);
+#include "Bindings/Bindings.h"
+namespace py = pybind11;
 
 PYBIND11_MODULE(MatVec, m) 
 {
-    init_MatVecBindings(m);
-	m.def("toNumPyArray", &toNumPyArray);
+    init_MatVecBindings<double>(m);
+	m.def("toNumPyArray", &toNumPyArray<double>);
 
 }
