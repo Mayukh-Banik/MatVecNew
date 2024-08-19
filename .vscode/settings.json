@@ -2,6 +2,7 @@
     "editor.insertSpaces": false,
     "editor.detectIndentation": false,
     "editor.tabSize": 4,
+	"git.decorations.enabled": false,
     "files.associations": {
 		"*.cpp": "cpp",
 		"*.cu": "cuda-cpp",

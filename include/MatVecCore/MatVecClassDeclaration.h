@@ -32,5 +32,6 @@ public:
     std::uint64_t length() {return this->elementCount;}
 	pybind11::tuple get_shape() const {return pybind11::cast(shape);}
     pybind11::tuple get_strides() const {return pybind11::cast(strides);}
+
 private:
 };

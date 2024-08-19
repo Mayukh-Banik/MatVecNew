@@ -2,3 +2,6 @@
 	path = lib/pybind11
 	url = https://github.com/pybind/pybind11.git
 	branch = stable
+[submodule "lib/nanobind"]
+	path = lib/nanobind
+	url = https://github.com/wjakob/nanobind

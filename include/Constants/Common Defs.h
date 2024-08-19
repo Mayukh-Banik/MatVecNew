@@ -16,11 +16,12 @@
 #include <boost/preprocessor/seq/for_each.hpp>
 #include <boost/preprocessor/stringize.hpp>
 
+#include <cstdint>
+#include <complex>
 /**
  * Usage:
  * 
- * 	#define NUMERIC_TYPES (std::int8_t)(std::uint8_t)(std::int16_t)(std::uint16_t)(std::int32_t)(std::uint32_t)(std::int64_t)(std::uint64_t)(float)(double)
- *	
+ * 	#define NUMERIC_TYPES (std::int8_t)(std::uint8_t)(std::int16_t)(std::uint16_t)(std::int32_t)(std::uint32_t)(std::int64_t)(std::uint64_t)(float)(double)	
 	#define GENERATE_SPECIALIZATION(r, data, T) \
     	template py::array_t<T> toNumPyArray<T>(const MatVec<T>& m);
 
@@ -28,4 +29,4 @@
 
 #undef GENERATE_SPECIALIZATION
  */
-#define NUMERIC_TYPES (std::int8_t)(std::uint8_t)(std::int16_t)(std::uint16_t)(std::int32_t)(std::uint32_t)(std::int64_t)(std::uint64_t)(float)(double)
+#define NUMERIC_TYPES (std::int8_t)(std::uint8_t)(std::int16_t)(std::uint16_t)(std::int32_t)(std::uint32_t)(std::int64_t)(std::uint64_t)(float)(double)(std::complex<float>)(std::complex<double>)

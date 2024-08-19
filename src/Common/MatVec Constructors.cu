@@ -65,10 +65,12 @@ MatVec<T>::~MatVec()
 }
 
 // Explicit instantiations for double
-template class MatVec<double>;
+// template class MatVec<double>;
 
-// template MatVec<double>::MatVec(const pybind11::array& array);
-// template MatVec<double>::MatVec(double* data, std::uint64_t ndim, std::uint64_t elementCount, std::uint64_t memSize, const std::vector<std::uint64_t> shape, const std::vector<std::uint64_t> strides);
-// template MatVec<double>::~MatVec();
+#define GENERATE_SPECIALIZATION(r, data, T) \
+    template class MatVec<T>;
 
+BOOST_PP_SEQ_FOR_EACH(GENERATE_SPECIALIZATION, ~, NUMERIC_TYPES)
+
+#undef GENERATE_SPECIALIZATION
 
