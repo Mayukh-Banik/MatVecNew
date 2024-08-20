@@ -15,9 +15,19 @@ public:
 	T* data;
 	std::uint64_t ndim;
 	std::vector<std::uint64_t> shape;
-	std::string device;
-	int deviceId;
 	std::vector<std::uint64_t> strides;
+	int elementSize;
+	std::uint64_t nBytes;
+	std::uint64_t elementCount;
+	int deviceId;
+	std::string device;
 
-	MatVec(const nanobind::ndarray<T>& arr);
+
+	MatVec(const nanobind::ndarray<T, nanobind::c_contig>& arr);
+
+	std::string toStringVerbose() const;
+	std::string toStringData() const;
+
+	nanobind::ndarray<T> toNumPy();
+	~MatVec();
 };

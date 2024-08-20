@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 if os.name == 'posix':  # For Linux and macOS
-    from build.Debug import MatVec as mv
+    from build.Release import MatVec as mv
 elif os.name == 'nt':  # For Windows
     from build.Debug.Debug import MatVec as mv
 else:
