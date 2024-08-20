@@ -3,7 +3,11 @@
 #include <sstream>
 #include <numeric>
 #include <nanobind/stl/vector.h>
+#include "cuda_runtime.h"
 #include <cstring>
+#include <nanobind/stl/complex.h>
+
+namespace nb = nanobind;
 
 template <typename T>
 MatVec<T>::MatVec(const nanobind::ndarray<T, nanobind::c_contig>& arr)
@@ -12,20 +16,16 @@ MatVec<T>::MatVec(const nanobind::ndarray<T, nanobind::c_contig>& arr)
     this->shape.reserve(this->ndim);
     this->strides.reserve(this->ndim);
     this->elementCount = 1;
-
     for (std::uint64_t count = 0; count < this->ndim; count++)
     {
         this->shape.push_back(static_cast<std::uint64_t>(arr.shape(count)));
         this->strides.push_back(static_cast<std::uint64_t>(arr.stride(count)));
         this->elementCount *= static_cast<std::uint64_t>(arr.shape(count));
     }
-
     this->elementSize = static_cast<int>(sizeof(T));
     this->nBytes = this->elementCount * static_cast<std::uint64_t>(this->elementSize);
-
     cudaError_t t = cudaMalloc((void**) &data, this->nBytes);
     CUDA_CHECK_ERROR(t);
-
     t = cudaMemcpy(data, arr.data(), this->nBytes, cudaMemcpyHostToDevice);
     CUDA_CHECK_ERROR(t);
 }
@@ -89,31 +89,33 @@ MatVec<T>::~MatVec()
 }
 
 template <typename T>
-nanobind::ndarray<T> MatVec<T>::toNumPy()
+nb::ndarray<nb::numpy, T> MatVec<T>::toNumPy() 
 {
-    std::vector<T> hostData(elementCount);
-    cudaError_t err = cudaMemcpy(hostData.data(), data, nBytes, cudaMemcpyDeviceToHost);
-	CUDA_CHECK_ERROR(err);
-    T* data_ptr = new T[elementCount];
-    memcpy(data_ptr, hostData.data(), nBytes);
-    auto capsule = nanobind::capsule(data_ptr, [](void *p) noexcept { delete[] static_cast<T*>(p); });
-    size_t* shape_ptr = new size_t[ndim];
-    int64_t* strides_ptr = new int64_t[ndim];
-    for (size_t i = 0; i < ndim; ++i) 
+	T* data = nullptr;
+	try
 	{
-        shape_ptr[i] = static_cast<size_t>(shape[i]);
-        strides_ptr[i] = static_cast<int64_t>(strides[i] * sizeof(T));
-    }
-    return nanobind::ndarray<T>(
-        data_ptr,                // Data pointer
-        ndim,                    // Number of dimensions
-        shape_ptr,               // Shape
-        capsule,                 // Capsule for memory management
-        strides_ptr,             // Strides
-        nanobind::dtype<T>(),    // Data type
-        0                        // Device (0 for CPU)
-    );
+		data = new T[this->elementCount];
+	}
+	catch(const std::exception& e)
+	{
+		throw std::runtime_error("Probably ran out of memory copying the memory to host");
+	}
+	cudaError_t t = cudaMemcpy(data_ptr, this->data, this->nBytes, cudaMemcpyDeviceToHost);
+	if (t != cudaSuccess)
+	{
+		delete[] data_ptr;
+		throw std::runtime_error(cudaGetErrorString(t));
+	}
+	nb::capsule owner(data_ptr, [](void* p) noexcept 
+	{
+		delete[] (T*) p;
+	});
+	return nb::ndarray<nb::numpy, T>(data_ptr, this->ndim, this->shape.data(), owner);
 }
+
+
+
+
 
 
 

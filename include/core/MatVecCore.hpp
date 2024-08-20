@@ -28,6 +28,6 @@ public:
 	std::string toStringVerbose() const;
 	std::string toStringData() const;
 
-	nanobind::ndarray<T> toNumPy();
+	nanobind::ndarray<nanobind::numpy, T> toNumPy();
 	~MatVec();
 };
