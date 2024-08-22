@@ -4,7 +4,8 @@
 #include <nanobind/ndarray.h>
 #include "defs/Macros.hpp"
 #include <vector>
-
+#include <nanobind/stl/vector.h>
+#include <nanobind/stl/tuple.h>
 
 template <typename T>
 class MatVec
@@ -29,5 +30,19 @@ public:
 	std::string toStringData() const;
 
 	nanobind::ndarray<nanobind::numpy, T> toNumPy();
+
+nanobind::tuple shapeToPythonTuple() const
+{
+	nanobind::tuple result(this->shape.size());
+for (size_t i = 0; i < this->shape.size(); ++i) {
+    result[i] = this->shape[i];
+}
+return result;
+	// // nanobind::make_tuple()
+	// return nanobind::make_tuple(this->shape);
+}
+
 	~MatVec();
 };
+
+// template nanobind::tuple MatVec<double>::shapeToPythonTuple() const;

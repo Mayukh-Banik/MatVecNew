@@ -12,6 +12,10 @@ namespace nb = nanobind;
 template <typename T>
 MatVec<T>::MatVec(const nanobind::ndarray<T, nanobind::c_contig>& arr)
 {
+	if (arr.dtype() != nanobind::dtype<double>()) 
+	{
+		throw nanobind::type_error("Input array must be of type np.float64");
+	}
     this->ndim = static_cast<std::uint64_t>(arr.ndim());
     this->shape.reserve(this->ndim);
     this->strides.reserve(this->ndim);
@@ -91,10 +95,10 @@ MatVec<T>::~MatVec()
 template <typename T>
 nb::ndarray<nb::numpy, T> MatVec<T>::toNumPy() 
 {
-	T* data = nullptr;
+	T* data_ptr = nullptr;
 	try
 	{
-		data = new T[this->elementCount];
+		data_ptr = new T[this->elementCount];
 	}
 	catch(const std::exception& e)
 	{
