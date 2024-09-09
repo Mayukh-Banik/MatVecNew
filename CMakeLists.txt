@@ -12,12 +12,12 @@ find_package(Boost REQUIRED)
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 add_subdirectory(lib/pybind11)
-add_subdirectory(lib/nanobind)
+# add_subdirectory(lib/nanobind)
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cu)
 
-# pybind11_add_module(MatVec SHARED ${SRC_FILES})
-nanobind_add_module(MatVec SHARED ${SRC_FILES})
+pybind11_add_module(MatVec SHARED ${SRC_FILES})
+# nanobind_add_module(MatVec SHARED ${SRC_FILES})
 
 # find_package(Python 3.10 COMPONENTS Interpreter ${DEV_MODULE} REQUIRED)
 
